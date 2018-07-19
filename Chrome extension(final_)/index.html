@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" style="width:550px; height:400px">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    @font-face {
+    font-family: myFont;
+    src: url(HelveticaNeueLight.woff);
+    }
+
+    div {
+    font-family: myFont;
+    }
+    body {
+      width: 550px;
+      height: 400px;
+      font-family: sans-serif;
+    }
+    .modal-login {
+        color: #636363;
+
+    }
+    .modal-login .modal-content {
+        padding: 20px;
+        border-radius: 15px;
+        border: none;
+    }
+    .modal-login .modal-header {
+        border-bottom: none;
+
+    }
+    .modal-login h4 {
+        text-align: center;
+        font-size: 26px;
+        margin: 30px 0 -15px;
+    }
+    .modal-login .form-control:focus {
+        border-color: #70c5c0;
+    }
+    .modal-login .form-control, .modal-login .btn {
+        min-height: 40px;
+        border-radius: 3px;
+    }
+    .modal-login .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .modal-login .modal-footer {
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        justify-content: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+    .modal-login .modal-footer a {
+        color: #999;
+    }
+    .modal-login .avatar {
+        position: absolute;
+        margin: 0 auto;
+        left:  430px;
+        right: 0;
+        top: 350px;
+        width: 115px;
+        height: 115px;
+        border-radius: 50%;
+        z-index: 9;
+
+        padding: 15px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    }
+    .modal-login .avatar img {
+        width: 100%;
+    }
+    .modal-login.modal-dialog {
+        margin-top: 80px;
+    }
+    .modal-login .btn {
+        color: #fff;
+        border-radius: 4px;
+        background: #60c7c1;
+        text-decoration: none;
+        transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+    .modal-login .btn:hover, .modal-login .btn:focus {
+        background: #45aba6;
+        outline: none;
+    }
+    .trigger-btn {
+        display: inline-block;
+        margin: 100px auto;
+    }
+    #icons{
+        display: -webkit-flex; /* Safari */
+        -webkit-justify-content: center; /* Safari 6.1+ */
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+</head>
+<body>
+    <div class="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-notify" role="document">
+        <!--Content-->
+        <div class="modal-content text-center rounded"  style="opacity:0.9">
+            <!--Header-->
+            <div class="modal-header modal-login justify-content-center rounded-top" style="background-color: #33b5e5">
+                <h3 class="heading " style="width: 250px">Treat the news with caution</h3>
+                <i class="fa fa-search fa-2x animated rotateIn" style="color:white"></i>
+                <i class="fa fa-info-circle close shadow-none" style="text-shadow: 0px 0px 0px;color:#a2e2f9" data-toggle="popover" data-container="body" data-placement="left" title="How credible is it?" data-html="true" data-content=">75%: News article with high level of credibility which can be considered as authentic in most cases.<br /><br /> 40-75%: News that are largely authentic but should be treated with caution if certain action needs to be taken (e.g. donation)<br /><br /> <40%: News that are highly suspicious as the information included may not be true."></i>
+            </div>
+
+            <!--Body-->
+            <div class="modal-body md-0">
+                <div class="row">
+                    <div class="col-6 border-right">
+                        <p class = "text-left">Credibility score:</p>
+                        <span id = "score" class="count mt-4 text-center display-1" style="color: #33b5e5">loading...</span>
+                    </div>
+                    <div class="col-6 text-left justify-content-left">
+                        <div id = "icons">
+                        <i id = "icons-format" data-toggle="tooltip" title="Elements of News" class="ml-4 m-3 fa fa-file-text fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        <i id = "icons-sentiment" data-toggle="tooltip" title="Unbiasedness" class="m-3 fa fa-balance-scale fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        <i id = "icons-retweet" data-toggle="tooltip" title="Number of retweets" class="m-3 fa fa-twitter fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        </div>
+                        <div id = "icons">
+                        <i id = "icons-author" data-toggle="tooltip" title="Author identity" class="ml-4 m-3 fa fa-user-circle fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        <i id = "icons-similarity" data-toggle="tooltip" title="Existence of similar news" class="m-3 fa fa-cloud fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        <i id = "icons-snope" data-toggle="tooltip" title="Fact authentification" class="m-3 fa fa-search fa-3x animated rotateIn" style="color:#2bbbad"></i>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-left m-0">You may also interested in:</p>
+                <p class="text-left m-0"><a href="#" id="new1" data-toggle="tooltip" title="Tooltip">Related News1</a> </p>
+                <p class="text-left md-1"><a href="#" id="new2" data-toggle="tooltip" title="Tooltip">Related News2</a> </p>
+                <button id = "fake"class = "fake-news btn btn-sm btn-notify" style="background-color: #ff8800" onclick="">Mark as Fake</button>
+                <button id = "credible"class = "credible-news btn btn-sm btn-notify" style="background-color: #2bbbad" onclick="">Mark as credible</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+        });
+        $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        });
+        $('.count').each(function () {
+            $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 1800,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="popup.js"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>
